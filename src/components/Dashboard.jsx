@@ -31,9 +31,11 @@ function Dashboard({ serials }) {
       <table className="w-full border-collapse">
         <thead>
           <tr className="">
+            <th className="border-b p-2"></th>
             <th className="border-b p-2">Serial</th>
             <th className="border-b p-2">Último Envio</th>
             <th className="border-b p-2">Bateria</th>
+            <th className="border-b p-2">Status da Bateria</th>
             <th className="border-b p-2">Gateway</th>
             <th className="border-b p-2">Comandos Confirmados?</th>
             <th className="border-b p-2">Status</th>
