@@ -29,12 +29,18 @@ function App() {
   const handleClearSerials = () => {
     setSerials([]);
     localStorage.removeItem('sensorSerials');
+    window.location.reload();
+  };
+
+  const handleDeleteSerial = (serialToRemove) => {
+    const updatedSerials = serials.filter((serial) => serial !== serialToRemove);
+    setSerials(updatedSerials);
   };
 
   return (
     <div className="App">
-      <header className="bg-[#1b75bb] text-white p-4">
-        <div className=' py-2'>
+      <header className="bg-[#1b75bb] w-full text-white p-4">
+        <div className='pl-4 py-2'>
           <SensorCompletelyWhite />
         </div>
         
@@ -60,7 +66,7 @@ function App() {
             onSave={handleInsertSerials}
           />
         )}
-        <Dashboard serials={serials} />
+        <Dashboard serials={serials} handleDeleteSerial={handleDeleteSerial}/>
       </main>
     </div>
   );

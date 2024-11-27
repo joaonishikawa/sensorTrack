@@ -1,7 +1,8 @@
 // src/components/SensorCard.js
 import React, { useEffect, useState } from 'react';
 
-function SensorCard({ sensor }) {
+
+function SensorCard({ sensor, handleDeleteSerial }) {
   const { device_serial, last_ack, parent } = sensor;
   const [commandsConfirmed, setCommandsConfirmed] = useState(false);
   const [batteryLevel, setBatteryLevel] = useState(null);
@@ -85,6 +86,7 @@ function SensorCard({ sensor }) {
   return (
     <>
       <tr className="text-center bg-[#F8F8F8]">
+          <td className='p-2 border cursor-pointer' onClick={handleDeleteSerial}>🗑️</td>
           <td className="p-2 border cursor-pointer " onClick={handleOpenModal}>📑</td>
         <td className="p-2 border">{device_serial}</td>
         <td className="p-2 border">{last_ack ? getLocalTime(last_ack) : 'N/A'}</td>

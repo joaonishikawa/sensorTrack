@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import SensorCard from './sensorCard';
 
-function Dashboard({ serials }) {
+function Dashboard({ serials, handleDeleteSerial }) {
   const [sensorData, setSensorData] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,8 @@ function Dashboard({ serials }) {
       <table className="w-full border-collapse">
         <thead>
           <tr className="">
-            <th className="border-b p-2"></th>
+            <th className="border-b p-2">Delete</th>
+            <th className="border-b p-2">Informações</th>
             <th className="border-b p-2">Serial</th>
             <th className="border-b p-2">Último Envio</th>
             <th className="border-b p-2">Bateria</th>
@@ -43,7 +44,7 @@ function Dashboard({ serials }) {
         </thead>
         <tbody>
           {sensorData.map((sensor) => (
-            <SensorCard key={sensor.device_serial} sensor={sensor} />
+            <SensorCard key={sensor.device_serial} sensor={sensor} handleDeleteSerial={handleDeleteSerial}/>
           ))}
         </tbody>
       </table>

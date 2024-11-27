@@ -9,7 +9,7 @@ function InsertSerialsModal({ show, onClose, onSave }) {
   }
 
   const handleSave = () => {
-    const serials = serialInput.split(/[;,]/).map((serial) => serial.trim());
+    const serials = serialInput.split(/;|,|\n/,).map((serial) => serial.trim()).filter(serial => serial !== '');
     onSave(serials);
     onClose();
   };
@@ -23,7 +23,7 @@ function InsertSerialsModal({ show, onClose, onSave }) {
           onChange={(e) => setSerialInput(e.target.value)}
           className="w-full p-2 border rounded mb-4"
           rows="5"
-          placeholder="Insira os seriais separados por ',' ou ';'"
+          placeholder="Insira os seriais separados por ',' ou ';' ou quebra de linha"
         />
         <button
           onClick={handleSave}
