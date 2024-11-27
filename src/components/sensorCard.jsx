@@ -116,7 +116,11 @@ function SensorCard({ sensor }) {
             <p><strong>Nível da Bateria:</strong> {batteryLevel !== null ? `${batteryLevel}%` : 'N/A'}</p>
             <p><strong>Status da Bateria:</strong> {batteryStatus || 'N/A'}</p>
             <p><strong>Gateway:</strong> {parent}</p>
-            <p><strong>Último Comando Enviado:</strong> {commands.length > 0 ? commands[commands.length - 1].command : 'N/A'}</p>
+            <p className="overflow-auto"><strong>Último Comando Enviado:<br></br></strong> {commands.length > 0 ? commands[0].value.split(',').map((item, index) => (
+    <span key={index}>
+      {item}
+      <br />
+    </span>)) : 'N/A'}</p>
             <button
               onClick={handleCloseModal}
               className="bg-red-500 text-white px-4 py-2 mt-4 rounded"
