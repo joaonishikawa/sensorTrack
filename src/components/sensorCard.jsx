@@ -22,7 +22,8 @@ function SensorCard({ sensor, handleDeleteSerial }) {
   // Determinando se o sensor está ativo (se enviou informações nas últimas 4 horas)
   const isActive = last_ack && (new Date() - new Date(last_ack) < 14400000);
 
-  const translations = {
+ 
+   const translations = {
     "power_down" : "Desligado",
     "power_down_with_low_battery" : "Desligado com pouca bateria",
     "power_up_charging" : "Ligado carregando",
@@ -86,8 +87,8 @@ function SensorCard({ sensor, handleDeleteSerial }) {
   return (
     <>
       <tr className="text-center bg-[#F8F8F8]">
-          <td className='p-2 border cursor-pointer' onClick={handleDeleteSerial}>🗑️</td>
-          <td className="p-2 border cursor-pointer " onClick={handleOpenModal}>📑</td>
+        <td className='p-2 border-b border-l cursor-pointer px-0' onClick={() => handleDeleteSerial(device_serial)}>🗑️</td>
+        <td className="p-2 border-b cursor-pointer px-0 " onClick={handleOpenModal}>📑</td>
         <td className="p-2 border">{device_serial}</td>
         <td className="p-2 border">{last_ack ? getLocalTime(last_ack) : 'N/A'}</td>
         <td className="p-2 border">{batteryLevel !== null ? `${batteryLevel}%` : 'N/A'}</td>
@@ -100,7 +101,7 @@ function SensorCard({ sensor, handleDeleteSerial }) {
             <span className="text-red-500">Não Confirmados</span>
           )}
         </td>
-        <td className="p-2">
+        <td className="p-2 border">
           {isActive ? (
             <span className="text-green-500">Ativo</span>
           ) : (
